@@ -1,15 +1,15 @@
 clear all; close all;
-%% paramètres de la boite
+%% paramÃ¨tres de la boite
 W=1*10^6; H=1.5*10^6; % [m] Largeur et longueur du model
 nodes=36;
 [x,y] = meshgrid(linspace(1,W,nodes),linspace(1,H,nodes));
-%% paramètres du modèle 
+%% paramÃ¨tres du modÃ¨le 
 vxo=10^-9*0.33; %[m/s] valeur initiale des composantes du vecteur vitesse
 vyo=10^-9; %[m/s]
 %% Equation de la vitesse  
 Vx=-vxo*sin(2*pi*x./W).*cos(pi*y./H);
 Vy=vyo*cos(2*pi*x./W).*sin(pi*y./H);
-%% Calcul des dérivés partielles
+%% Calcul des dÃ©rivÃ©s partielles
 Vxdx=-vxo*2*pi/W.*cos(2*pi*x./W).*cos(pi*y./H);
 Vydy=vyo*cos(2*pi*x./W).*-sin(pi*y./H)*pi/H;
 divV=Vxdx+Vydy;
