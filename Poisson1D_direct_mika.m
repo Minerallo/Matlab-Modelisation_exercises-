@@ -1,9 +1,9 @@
-clear all; close all; 
+clear all; close all;
 %exos Poisson1D
 
 distance=1e+6; %distance en m du premier point au dernier
-npt=1000;%nombre de point 
-L=sparse(npt,npt); %est le coefficient devant chaque FI 
+npt=1000;%nombre de point
+L=sparse(npt,npt); %est le coefficient devant chaque FI
 %(FI(i,i-1)+FI(i,i+1)-2FI(i,i))/dx^2
 dx=distance/(npt-1);
 R=zeros(npt,1);
@@ -12,7 +12,7 @@ R=zeros(npt,1);
 L(1,1)=1;
 R(1,1)=0;
 
-%point intermédiaire
+%point intermï¿½diaire
 for i=2:1:npt-1
     %definition des coefficients L
     L(i,i-1)=1/dx^2;

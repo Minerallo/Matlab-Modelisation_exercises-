@@ -1,2 +1,2 @@
 # Matlab-Modelisation_exercises-
-My first modelisation_exercises, explicit, implicit
+Some modelisation_exercises using finite differences explicit and implicit following the Taras Gerya book's

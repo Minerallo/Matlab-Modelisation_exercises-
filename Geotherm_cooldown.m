@@ -1,36 +1,36 @@
 % programme M2 sciences de la terre
 clear; close all;
-%==========Les Paramètres======================================================
-T0 = 273;                   %température de surface [k]
-Tm = 1850;                  %température initiale de manteau délaminé [k]
-rhoc = 2650 ;               %densité de la croûte sup [Kg.m-3]
-rhoci= 2800                 %densité de la croûte inf [Kg.m-3]
-rhoml= 3250 ;               %densité du lithos  [Kg.m-3]
-rhoa = 3300                 %densité du asthénosphère    [Kg.m-3]
+%==========Les Paramï¿½tres======================================================
+T0 = 273;                   %tempï¿½rature de surface [k]
+Tm = 1850;                  %tempï¿½rature initiale de manteau dï¿½laminï¿½ [k]
+rhoc = 2650 ;               %densitï¿½ de la croï¿½te sup [Kg.m-3]
+rhoci= 2800                 %densitï¿½ de la croï¿½te inf [Kg.m-3]
+rhoml= 3250 ;               %densitï¿½ du lithos  [Kg.m-3]
+rhoa = 3300                 %densitï¿½ du asthï¿½nosphï¿½re    [Kg.m-3]
 
-kc = 2.3;                   % la conductivité de la croûte sup [W.m-1K-1]
-kci = 2.5;                  % la conductivité de la croûte inf[W.m-1K-1]
-kml= 3.1;                   % la conductivité de la lithos [W.m-1K-1]
-ka = 3.5;                   % la conductivité  du asthénosphère  [W.m-1K-1]
+kc = 2.3;                   % la conductivitï¿½ de la croï¿½te sup [W.m-1K-1]
+kci = 2.5;                  % la conductivitï¿½ de la croï¿½te inf[W.m-1K-1]
+kml= 3.1;                   % la conductivitï¿½ de la lithos [W.m-1K-1]
+ka = 3.5;                   % la conductivitï¿½  du asthï¿½nosphï¿½re  [W.m-1K-1]
 
-Cpc    = 800;               %capacité calorifique de la croûte sup [J.Kg-1.k-1]
-Cpci    = 900;              %capacité calorifique de la croûte inf [J.Kg-1.k-1]
-cpml   = 1230;              %capacité calorifique  de la lithos [J.Kg-1.k-1]
-cpa    = 1260;              %capacité calorifique  du asthénosphère   [J.Kg-1.k-1]
+Cpc    = 800;               %capacitï¿½ calorifique de la croï¿½te sup [J.Kg-1.k-1]
+Cpci    = 900;              %capacitï¿½ calorifique de la croï¿½te inf [J.Kg-1.k-1]
+cpml   = 1230;              %capacitï¿½ calorifique  de la lithos [J.Kg-1.k-1]
+cpa    = 1260;              %capacitï¿½ calorifique  du asthï¿½nosphï¿½re   [J.Kg-1.k-1]
 
-Rc = 1.7e-6;                %chaleur volumique de la croûte supérieure[W.m-3]
-Rci = 0.18e-6;              %chaleur volumique de la croûte inf[W.m-3]
+Rc = 1.7e-6;                %chaleur volumique de la croï¿½te supï¿½rieure[W.m-3]
+Rci = 0.18e-6;              %chaleur volumique de la croï¿½te inf[W.m-3]
 Rml = 0.02e-6;              %chaleur volumique de la litho[W.m-3]
-Ra = 0.005e-6;              %chaleur volumique du asthénosphère  [W.m-3]
+Ra = 0.005e-6;              %chaleur volumique du asthï¿½nosphï¿½re  [W.m-3]
 
-Qo = 11e-3;                 % Flux de chaleur à la base de l’asthénosphère pour géotherme normal[W.m-2]
-Qdo = 3.5e-3                % Flux de chaleur  dà la base de l’asthénosphère pour géotherme délaminé [W.m-2]
+Qo = 11e-3;                 % Flux de chaleur ï¿½ la base de lï¿½asthï¿½nosphï¿½re pour gï¿½otherme normal[W.m-2]
+Qdo = 3.5e-3                % Flux de chaleur  dï¿½ la base de lï¿½asthï¿½nosphï¿½re pour gï¿½otherme dï¿½laminï¿½ [W.m-2]
 
-zc = 0 ;                    %  la profondeur à la surface  [m]
-zci  = 15*1e3 ;             %  la profondeur de la croûte supérieur  [m]
-zml = 30*1e3 ;              %  la profondeur  la croûte inférieure    [m]
-za = 100*1e3 ;              %  la profondeur de manteau lithosphérique   [m]
-zo  = 300*1e3 ;             %  la profondeur de l'asthénosphère  [m]
+zc = 0 ;                    %  la profondeur ï¿½ la surface  [m]
+zci  = 15*1e3 ;             %  la profondeur de la croï¿½te supï¿½rieur  [m]
+zml = 30*1e3 ;              %  la profondeur  la croï¿½te infï¿½rieure    [m]
+za = 100*1e3 ;              %  la profondeur de manteau lithosphï¿½rique   [m]
+zo  = 300*1e3 ;             %  la profondeur de l'asthï¿½nosphï¿½re  [m]
 
 zmax = 300 ;                %profondeur max  [Km]
 zmin= 0;                    %Profondeur min  [km]
@@ -42,25 +42,25 @@ nt = 1000;
 
 zmin=zmin*1e3;                      % profondeur en [m]
 zmax=zmax*1e3;                      % la Profondeur [m]
-dz  = (zmax - zmin) / (nz) ;        % résolution
+dz  = (zmax - zmin) / (nz) ;        % rï¿½solution
 
 Ma = 1e6*365*24*3600;
-tmin = tmin*1e6*365*24*3600;        % Pour mettre l'unité de temps en [ Ma ] au lieu de [s]
-tmax = 100*tmax*1e6*365*24*3600;    % Pour mettre l'unité de temps en [ Ma ] au lieu de [s]
+tmin = tmin*1e6*365*24*3600;        % Pour mettre l'unitï¿½ de temps en [ Ma ] au lieu de [s]
+tmax = 100*tmax*1e6*365*24*3600;    % Pour mettre l'unitï¿½ de temps en [ Ma ] au lieu de [s]
 dt=(tmax - tmin) / (nt);            % Pas de temps
-z= zmin:dz:zmax;                    % le tableau de la profondeur de 0 à 300 km   
+z= zmin:dz:zmax;                    % le tableau de la profondeur de 0 ï¿½ 300 km
 zinv= z(end:-1:1);
-t=tmin:dt:tmax;                     % le tableau de temps[m]   
+t=tmin:dt:tmax;                     % le tableau de temps[m]
 
-rho = zeros (size (z));             % Tableau pour remplissage de densité
-cp = zeros (size (z));              % Tableau pour remplissage de densité
-k = zeros (size (z));               % Tableau pour remplissage de conductivité thermique 
-kappa = zeros (size (z));           % Tableau pour remplissage de diffusivité thermique 
-T = zeros(size(z));                 % Tableau pour remplissage de la température 
-Td = zeros(size(z));                % Tableau pour remplissage de la température 
+rho = zeros (size (z));             % Tableau pour remplissage de densitï¿½
+cp = zeros (size (z));              % Tableau pour remplissage de densitï¿½
+k = zeros (size (z));               % Tableau pour remplissage de conductivitï¿½ thermique
+kappa = zeros (size (z));           % Tableau pour remplissage de diffusivitï¿½ thermique
+T = zeros(size(z));                 % Tableau pour remplissage de la tempï¿½rature
+Td = zeros(size(z));                % Tableau pour remplissage de la tempï¿½rature
 
 %=============remplissage des tableaux de  rho et cp et k======
-for i=1:size(z,2) 
+for i=1:size(z,2)
    if (zci > z(i))                 % entre 0 et 15 Km
        rho (i) = rhoc ;
        cp (i)  = Cpc ;
@@ -83,37 +83,37 @@ for i=1:size(z,2)
    end
 end
 
-%===== replissage de diffusivité =============
+%===== replissage de diffusivitï¿½ =============
 for i = 1 : size (z,2)
    kappa (i) = k (i) / (rho (i)*cp(i));
 end
-%=====Affichage de la densité,capacité calorifique et la Conductivité thermique
+%=====Affichage de la densitï¿½,capacitï¿½ calorifique et la Conductivitï¿½ thermique
 figure (1)
-subplot(1,3,1); 
+subplot(1,3,1);
 plot(rho,-z/1e3),
-xlabel('Densité');
+xlabel('Densitï¿½');
 ylabel('Z (km)');
 title ('Rho [kg.m-3]');
 
 hold on
-subplot(1,3,2); 
+subplot(1,3,2);
 plot(cp,-z/1e3),
-xlabel('Capacité thermique');
-ylabel('Z (km)'); 
+xlabel('Capacitï¿½ thermique');
+ylabel('Z (km)');
 title ('Cp [J.kg-1.K-1]');
 
 hold on
-subplot(1,3,3); 
+subplot(1,3,3);
 plot(k,-z/1e3),
-xlabel('Conductivité thermique');
-ylabel('Z (km)'); 
+xlabel('Conductivitï¿½ thermique');
+ylabel('Z (km)');
 title ('k [W.m-1.K-1]');
 
-%=======================détermination du géotherme normale=========== 
+%=======================dï¿½termination du gï¿½otherme normale===========
 z = zinv ;
-zo=300*1e3;                     % à l'asthénosphère
+zo=300*1e3;                     % ï¿½ l'asthï¿½nosphï¿½re
 for i=1:size(z,2)
-   if (z(i)> za)          
+   if (z(i)> za)
        T(i)=(-Ra/(2*ka))*(z(i)-zo)^2+(Qo/ka)*(z(i)-zo)+Tm
    end
 end
@@ -127,7 +127,7 @@ for i= 1:size (z,2)
    end
 end
 
-Q2=-(-kml*(T(270)-T(271))/1000)  % le flux chaleur entre la profondeur 270 Km et 271 Km 
+Q2=-(-kml*(T(270)-T(271))/1000)  % le flux chaleur entre la profondeur 270 Km et 271 Km
 zo=zml
 
 for i= 1:size (z,2)
@@ -137,7 +137,7 @@ for i= 1:size (z,2)
 end
 
 %Q3=-(-kc*(T(285)-T(286))/1000)
-Q3 = 60e-3;                     % le flux chaleur à la surface : connu
+Q3 = 60e-3;                     % le flux chaleur ï¿½ la surface : connu
 zo=zci
 
 for i= 1:size (z,2)
@@ -146,7 +146,7 @@ for i= 1:size (z,2)
    end
 end
 
-%=======================détermination du géotherme délaminé=========== 
+%=======================dï¿½termination du gï¿½otherme dï¿½laminï¿½===========
 z = zinv ;
 zo=300*1e3;
 ka=1000
@@ -175,7 +175,7 @@ for i= 1:size (z,2)
 end
 
 %Qd3=-(-kc*(Td(285)-Td(286))/1000)
-Qd3 = 60e-3;                                % le flux chaleur à la surface : connu
+Qd3 = 60e-3;                                % le flux chaleur ï¿½ la surface : connu
 zo=zci
 
 for i= 1:size (z,2)
@@ -183,7 +183,7 @@ for i= 1:size (z,2)
        Td(i)=(-Rc/(2*kc))*(z(i)-zo)^2+(Qd3/kc)*(z(i)-zo)+Td(285)
    end
 end
-%===============La boucle de changement du gradient géothermique avec le temps============
+%===============La boucle de changement du gradient gï¿½othermique avec le temps============
 
 t=0
 for i = 1 : nt
@@ -193,16 +193,16 @@ for i = 1 : nt
    for j=2:size (z,2)-1;
        Tnew(1,j)=Td(1,j)+(T(1,j)-Td(1,j))*erfc(z(1,i)/(2*sqrt(kappa(1,i)*t)));
    end
-   
+
    t =   t + dt;
-   
-   % La boucle pour déterminer la profondeur de la lithosphère à une Tnew donnée 
+
+   % La boucle pour dï¿½terminer la profondeur de la lithosphï¿½re ï¿½ une Tnew donnï¿½e
    tlitho = 1570 ;
    dif   = abs(Tnew-tlitho);
    match  = dif == min(dif);
    idx = find(dif == min(dif));
    zlitho = z(idx);
-   
+
    figure(2)
    plot(T,-z/1e3,'g','lineWidth',2)
    hold on
@@ -218,7 +218,7 @@ for i = 1 : nt
    ylabel('z [km]');
    xlabel('Temperature [k]');
    title([' Gradient geothermique, time : ',num2str(t/Ma),' Ma'])
-   legend ('Geotherme à Eq','T°délamination','T°refroidissement')
+   legend ('Geotherme ï¿½ Eq','Tï¿½dï¿½lamination','Tï¿½refroidissement')
    %xlim([0 Tm])
    drawnow
    %pause(0.1)
